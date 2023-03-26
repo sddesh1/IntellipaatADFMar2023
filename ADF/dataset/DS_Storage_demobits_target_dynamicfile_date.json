@@ -1,0 +1,41 @@
+{
+	"name": "DS_Storage_demobits_target_dynamicfile_date",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "LS_Storage_demobits",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"fileName": "Product.txt",
+				"folderPath": {
+					"value": "@formatDateTime(utcNow(),'yyyyMMdd')",
+					"type": "Expression"
+				},
+				"container": "target"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": [
+			{
+				"name": "TweetCounts",
+				"type": "String"
+			},
+			{
+				"name": "TweetLikes",
+				"type": "String"
+			},
+			{
+				"name": "Date",
+				"type": "String"
+			}
+		]
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

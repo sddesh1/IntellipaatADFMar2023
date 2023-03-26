@@ -1,0 +1,27 @@
+{
+	"name": "TRG_BlobCreateEvent_PL_CopyDynamicFile",
+	"properties": {
+		"annotations": [],
+		"runtimeState": "Started",
+		"pipelines": [
+			{
+				"pipelineReference": {
+					"referenceName": "PL_CopyDynamicFile",
+					"type": "PipelineReference"
+				},
+				"parameters": {
+					"FileName": "@triggerBody().fileName"
+				}
+			}
+		],
+		"type": "BlobEventsTrigger",
+		"typeProperties": {
+			"blobPathBeginsWith": "/source/blobs/",
+			"ignoreEmptyBlobs": true,
+			"scope": "/subscriptions/d003678d-3be9-4518-b21e-a5101bea6844/resourceGroups/demoRG/providers/Microsoft.Storage/storageAccounts/demobits",
+			"events": [
+				"Microsoft.Storage.BlobCreated"
+			]
+		}
+	}
+}
